@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/mrt_cost', "MrtCostController@getMrtCost");
+Route::middleware("throttle:50,1")->get('/mrt_cost', "MrtCostController@getMrtCost");
